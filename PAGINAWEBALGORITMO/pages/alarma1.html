@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- ICONOS -->
+
+    <title>Simulación de Alarma</title>
+    <!-- Agregar Font Awesome para los íconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Agregar SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/img/alarmafondo.jpg');
+            background-size: cover;
+            /* Ajusta la imagen para cubrir toda la pantalla */
+            background-position: center;
+            /* Centra la imagen */
+            background-repeat: no-repeat;
+            /* Evita que se repita */
+            background-attachment: fixed;
+            /* Hace que la imagen no se mueva con el scroll */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Barra de navegación */
+        nav {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            /* Desenfoque de fondo */
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            /* Sombra alrededor */
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: all 0.4s;
+
+        }
+
+        nav a:hover {
+            border-radius: 5px;
+            color: #000000;
+            font-weight: bold;
+            transition: all 0.6s;
+            padding: 10px 25px;
+            font-size: 20px;
+        }
+
+        .nav-title {
+            color: rgb(0, 0, 0);
+            font-size: 24px;
+            font-weight: bold;
+            padding-left: 20px;
+        }
+
+        /* Título de la página */
+        h1 {
+            margin-top: 80px;
+            color: #333;
+        }
+
+        /* Estilos para el contenedor con borde, desenfoque y sombra */
+        .content-box {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            /* Desenfoque de fondo */
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            /* Sombra alrededor */
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        /* Controles para los botones (centrado horizontal y vertical) */
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            max-width: 600px;
+            margin: 20px auto;
+            flex-direction: row;
+            /* Botones en fila (de lado a lado) */
+        }
+
+        .btn {
+            padding: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .closed {
+            background-color: #4CAF50;
+        }
+
+        .open {
+            background-color: #ff4d4d;
+        }
+
+        /* Estilos para texto de estado la alarma (MENSAJE)*/
+        .alarm-status {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        .active {
+            color: rgb(255, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Barra de navegación -->
+    <nav>
+        <div class="nav-title">
+            <a href="/index.html" style="font-size: 1.2em; color: #000000; font-weight: bold; text-decoration: none;">
+                Simulación de Alarma <i class="fas fa-bell" style="margin-left: 10px; color: red;"></i>
+            </a>
+        </div>
+        <div>
+            <a href="/index.html">
+                <i class="fas fa-home" style="margin-right: 10px;"></i> Inicio
+            </a>
+            <a href="simulacion.html">
+                <i class="fas fa-bell" style="margin-right: 10px;"></i> Simulación de Alarma
+            </a>
+            <a href="OMITIR.html">
+                <i class="fa-solid fa-square-caret-right" style="margin-right: 10px;"></i> Omitir Alarma
+            </a>
+        </div>
+    </nav>
+
+    <!-- Contenido dentro del  borde con efecto de desenfoque y sombra -->
+    <div class="content-box">
+        <!-- Título de la página -->
+        <h1 style="color: #3A4A5A;">Simulación de Alarma</h1>
+
+        <!-- Controles para los botones -->
+        <div class="controls">
+            <!-- Botón para la puerta -->
+            <button id="doorBtn" class="btn closed" onclick="toggle('door')">
+                <i class="fas fa-door-closed"></i> Puerta
+            </button>
+            <!-- Botón para la ventana 1 -->
+            <button id="window1Btn" class="btn closed" onclick="toggle('window1')">
+                <i class="fas fa-window-maximize"></i> Ventana 1
+            </button>
+            <!-- Botón para la ventana 2 -->
+            <button id="window2Btn" class="btn closed" onclick="toggle('window2')">
+                <i class="fas fa-window-maximize"></i> Ventana 2
+            </button>
+        </div>
+
+        <!-- Estado de la alarma debajo de los botones -->
+        <div class="alarm-status" id="alarmStatus">
+            Alarma: Desactivada
+        </div>
+    </div>
+
+    <script>
+        // Estado de las entradas (puerta y ventanas)
+        const states = { door: false, window1: false, window2: false };
+
+        // Cargar el sonido de alarma
+        const alarmSound = new Audio('/audio/Respuesta Incorrecta .mp3'); // SONIDO DE LA ALARMA...
+
+        // Función para cambiar el estado de la puerta o ventana
+        function toggle(item) {
+            states[item] = !states[item]; // Cambiar el estado de la entrada
+            const btn = document.getElementById(item + 'Btn');
+            btn.classList.toggle('open', states[item]);
+            btn.classList.toggle('closed', !states[item]);
+
+            // Cambiar el ícono según el estado
+            if (states[item]) {
+                if (item === 'door') {
+                    btn.innerHTML = `<i class="fas fa-door-open"></i> Puerta`;
+                } else {
+                    btn.innerHTML = `<i class="fas fa-window-close"></i> ${item === 'window1' ? 'Ventana 1' : 'Ventana 2'}`;
+                }
+            } else {
+                if (item === 'door') {
+                    btn.innerHTML = `<i class="fas fa-door-closed"></i> Puerta`;
+                } else {
+                    btn.innerHTML = `<i class="fas fa-window-maximize"></i> ${item === 'window1' ? 'Ventana 1' : 'Ventana 2'}`;
+                }
+            }
+
+            checkAlarm(); // Verificar el estado de la alarma
+        }
+
+        // Función para verificar si la alarma debe activarse
+        function checkAlarm() {
+            const alarmStatus = document.getElementById('alarmStatus');
+            const isAlarmActive = states.door && (states.window1 || states.window2); // Condición para activar la alarma
+
+            // Actualizar el texto de la alarma
+            alarmStatus.textContent = `Alarma: ${isAlarmActive ? 'Activada' : 'Desactivada'}`;
+            alarmStatus.classList.toggle('active', isAlarmActive);
+
+            // Mostrar SweetAlert y reproducir sonido cuando la alarma está activada..
+            if (isAlarmActive) {
+                // Reproducir el sonido de alarma
+                alarmSound.play().catch(error => {
+                    console.error('No se pudo reproducir el sonido:', error);
+                });
+
+                Swal.fire({
+                    title: '¡Alarma Activada!',
+                    text: 'La puerta y una o más ventanas están abiertas.',
+                    icon: 'warning',
+                    confirmButtonText: 'Entendido',
+                    imageUrl: '/img/Main.png', // Ruta de la imagen
+                    imageAlt: 'Alarma Activada', // Descripción de la imagen
+                    width: '65%', // Ajusta el 60% del ancho de la pantalla
+                    heightAuto: true, // Ajusta la altura automáticamente
+                    imageWidth: '95%',  // Hace que la imagen ocupe el 100% del contenedor
+                    imageHeight: 'auto', // Mantiene la proporción de la imagen
+                    backdrop: true, // Fondo oscuro
+                    background: '#fff' // Fondo de la alerta
+                });
+            } else {
+                Swal.fire({
+                    title: 'Alarma Desactivada',
+                    text: 'El sistema está en estado seguro.',
+                    icon: 'info',
+                    confirmButtonText: 'Entendido',
+                    imageUrl: '/img/Main.png', // Ruta de la imagen
+                    imageAlt: 'Alarma Desactivada', // Descripción de la imagen
+                    width: '65%', // Ajusta el 60% del ancho de la pantalla
+                    heightAuto: true, // Ajusta la altura automáticamente
+                    imageWidth: '95%',  // Hace que la imagen ocupe el 100% del contenedor
+                    imageHeight: 'auto', // Mantiene la proporción de la imagen
+                    backdrop: true, // Fondo oscuro
+                    background: '#fff' // Fondo de la alerta
+                });
+            }
+        }
+    </script>
+
+</body>
+
+</html>

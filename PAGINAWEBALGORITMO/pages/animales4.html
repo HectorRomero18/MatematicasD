@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIVEL 4</title>
+    <link rel="stylesheet" href="/css/animales.css">
+</head>
+
+<body>
+    <div id="resp">
+        <h1>
+            COMPUERTAS LOGICAS
+            <hr> ¿Cuál es la representación de la compuerta lógica XNOR?
+        </h1>
+    </div>
+    <br>
+
+    <style>  /*ESTE ES CSS DEL MENU DE NAVEGACION DE LOS NIVELES!!
+       /* Estilo del botón */
+       .estiloBotonEnlace{
+            background-color: transparent;/* Color de fondo */
+            color: rgb(255, 255, 255); /* Color del texto */
+            background-color: rgb(243, 132, 5);
+            /*padding: 10px 20px; /* Espaciado interno */
+            font-size: 16px; /* Tamaño del texto */
+            border: none; /* Sin borde */
+           /* border-radius: 5px; /* Bordes redondeados */
+           /* cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            font-weight: bold;
+            transition: all 0.5s ease;
+            margin-left: 30px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+
+        /* Estilo al pasar el mouse sobre el botón */
+        .estiloBotonEnlace:hover {
+            background-color: #ffffff; /* Cambia el color de fondo al pasar el mouse */
+            color: rgb(0, 0, 0);
+            border-radius: 15px;
+            padding: 10px 10px;
+            margin-left: 20px;
+        }
+    </style>
+
+    <a href="/index.html" class="estiloBotonEnlace">PAGINA PRINCIPAL</a>
+    <a href="/pages/animales7.html" class="estiloBotonEnlace">OMITIR CATEGRIA</a>
+    <button id="mostrarAlerta" class="estiloBotonEnlace">OMITIR NIVEL</button>
+    <div style="margin-top: 50px;"></div>
+
+    <div class="caja">
+        <img src="/img/136469575_b2492db8-f45b-4f23-bf4d-d96fee944fc8.jpg"
+        alt="Imagen" height="300px" id="miImagen" style="cursor: pointer;">
+    </div>
+
+    <div class="opcs1">
+        <img src="/img/circuito-xnor-game.png"
+            alt="gato" height="275px" id="Gato" onclick="verificarRespuesta(`gato`)" 
+            style="cursor: pointer;">
+        <img src="/img/circuito-if-game.png" alt="vaca" height="275px" id="Vaca" onclick="verificarRespuesta(`vaca`)"
+            style="cursor: pointer;">
+        <img src="/img/circuito-or-game.png" alt="tiburon" height="275px" id="Tiburon" onclick="verificarRespuesta(`tiburon`)"
+            style="cursor: pointer;">
+    </div>
+
+    <!--ESTE ES SONIDO CORRECTO-->
+    <audio id="correcto">
+        <source src="/audio/Respuesta Correcta .mp3" type="audio/mp3">
+    </audio>
+    <!--ESTE ES SONIDO INCORRECTO-->
+    <audio id="incorrecto">
+        <source src="/audio/Respuesta Incorrecta .mp3" type="audio/mp3">
+    </audio>
+
+    <script src="/js/nivel4.js"></script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="/js/sweetAlert.js"></script>
+</body>
+</html>

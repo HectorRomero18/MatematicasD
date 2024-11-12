@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Circuitos con Sonido</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/img/alarmafondo.jpg');
+            background-size: cover;
+            /* Ajusta la imagen para cubrir toda la pantalla */
+            background-position: center;
+            /* Centra la imagen */
+            background-repeat: no-repeat;
+            /* Evita que se repita */
+            background-attachment: fixed;
+        }
+
+        .lamp {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: grey; /* Lámpara apagada */
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lamp i {
+            font-size: 50px;
+            color: white;
+        }
+
+        .encendida {
+            background-color: yellow; /* Lámpara encendida */
+            transition: background-color 0.3s;
+        }
+
+        .apagada {
+            background-color: grey;
+            transition: background-color 0.3s;
+        }
+
+        .custom-card {
+            background: transparent;
+            backdrop-filter: blur(20px);
+            /* Desenfoque de fondo */
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .switch-label {
+            font-size: 1.5em;
+            margin-left: 20px;
+        }
+
+        .form-check-input {
+            transform: scale(2); /* Aumenta el tamaño de los interruptores */
+            margin-right: 20px;
+        }
+
+        .info-icon {
+            font-size: 2em;
+            color: #17a2b8;
+            margin-right: 30px; /* Ajuste para espacio entre icono y switch */
+            min-height: 65px; /* Ajuste para espacio entre icono y switch */
+        }
+
+        /* Ajuste para alinear los iconos con los interruptores grandes */
+        .d-flex.align-items-center {
+            align-items: center; /* Alinear verticalmente los iconos */
+            justify-content: flex-start; /* Alinear horizontalmente */
+        }
+
+        .equation {
+            font-size: 2.5em;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        /* Mejor estilo para la ecuación */
+        .equation-container {
+            background: transparent;
+            backdrop-filter: blur(20px);
+            /* Desenfoque de fondo */
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        #math_one{
+            font-size: 19px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Simulador de Circuitos con Sonido</h1>
+
+        <!-- Contenedor de la ecuación lógica -->
+        <div class="row justify-content-center">
+            <div class="col-12 text-center equation-container">
+                <p id="math_one">Encuentra la combinacion correcta para que la bombilla se encienda!</p>
+                <p class="equation">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mi>A</mi>
+                            <mo>&#8901;</mo>
+                            <mi>B</mi>
+                            <mo>&#8290;</mo>
+                            <mo>&#8290;</mo>
+                            <mo>&#172;</mo>
+                            <mi>C</mi>
+                        </mrow>
+                    </math>
+                </p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <!-- Card para el circuito -->
+                <div class="custom-card">
+                    <h3 class="text-center mb-4">Interruptores</h3>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-toggle-on info-icon"></i>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch1">
+                            <label class="form-check-label switch-label" for="switch1">Interruptor 1 (A)</label>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-toggle-on info-icon"></i>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch2">
+                            <label class="form-check-label switch-label" for="switch2">Interruptor 2 (B)</label>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-toggle-off info-icon"></i>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch3">
+                            <label class="form-check-label switch-label" for="switch3">Interruptor 3 (C)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-auto">
+                <!-- Lámpara con icono de bombilla -->
+                <div id="lamp" class="lamp apagada">
+                    <i class="bi bi-lightbulb"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-3">
+            <div class="col-auto">
+                <!-- Botón para mostrar instrucciones -->
+                <button id="instruccionesBtn" class="btn btn-info">
+                    <i class="bi bi-info-circle"></i> Ver Instrucciones
+                </button>
+            </div>
+        </div>
+
+        <!-- Elemento de audio para el sonido -->
+        <audio id="audio" src="/audio/Respuesta Correcta .mp3" preload="auto"></audio>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Selecciona los elementos de la lámpara, interruptores y el sonido
+        const lamp = document.getElementById("lamp");
+        const switch1 = document.getElementById("switch1");
+        const switch2 = document.getElementById("switch2");
+        const switch3 = document.getElementById("switch3");
+        const instruccionesBtn = document.getElementById("instruccionesBtn");
+        const audio = document.getElementById("audio"); // El elemento de audio
+
+        // Función para verificar la lógica avanzada de los interruptores
+        function verificarCircuito() {
+            // Lógica avanzada: A && B && !C
+            const estadoLamp = switch1.checked && switch2.checked && !switch3.checked;
+
+            // Cambia el estado de la lámpara
+            if (estadoLamp) {
+                lamp.classList.remove("apagada");
+                lamp.classList.add("encendida");
+
+                // Reproducir el sonido
+                audio.play();
+
+                // SweetAlert para mostrar mensaje de lámpara encendida
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Lámpara encendida',
+                    text: 'La configuración es correcta: A y B encendidos, C apagado.',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            } else {
+                lamp.classList.remove("encendida");
+                lamp.classList.add("apagada");
+            }
+        }
+
+        // Mostrar instrucciones con SweetAlert
+        instruccionesBtn.addEventListener("click", () => {
+            Swal.fire({
+                icon: 'info',
+                title: 'Instrucciones',
+                text: 'La lámpara se encenderá solo cuando: \n - Interruptor 1 (A) y 2 (B) estén encendidos \n - Interruptor 3 (C) esté apagado.',
+                confirmButtonText: 'Entendido'
+            });
+        });
+
+        // Añadir eventos a los interruptores
+        switch1.addEventListener("change", verificarCircuito);
+        switch2.addEventListener("change", verificarCircuito);
+        switch3.addEventListener("change", verificarCircuito);
+    </script>
+</body>
+</html>

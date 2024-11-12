@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIVEL 7</title>
+    <link rel="stylesheet" href="/css/animales.css">
+    <style>  /*ESTE ES CSS DEL MENU DE NAVEGACION DE LOS NIVELES!!
+        /* Estilo del botón */
+    .estiloBotonEnlace {
+      background-color: transparent;
+      /* Color de fondo */
+      color: rgb(255, 255, 255);
+      /* Color del texto */
+      background-color: rgb(243, 132, 5);
+      /*padding: 10px 20px; /* Espaciado interno */
+      font-size: 16px;
+      /* Tamaño del texto */
+      border: none;
+      /* Sin borde */
+      /* border-radius: 5px; /* Bordes redondeados */
+      /* cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+      font-weight: bold;
+      transition: all 0.5s ease;
+      margin-left: 30px;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 15px;
+    }
+
+    /* Estilo al pasar el mouse sobre el botón */
+    .estiloBotonEnlace:hover {
+      background-color: #ffffff;
+      /* Cambia el color de fondo al pasar el mouse */
+      color: rgb(0, 0, 0);
+      border-radius: 15px;
+      padding: 10px 10px;
+      margin-left: 20px;
+    }
+    </style>
+</head>
+
+<body>
+  <div id="resp">
+    <h1>
+      COMPUERTAS LOGICAS
+      <hr> ¿Cuál es la representación de la compuerta lógica NOR?
+    </h1>
+  </div>
+  <br>
+    <a href="/index.html" class="estiloBotonEnlace">PAGINA PRINCIPAL</a>
+    <a href="/SiluetasAnimales/JirafaSilueta.html" class="estiloBotonEnlace">OMITIR CATEGRIA</a>
+    <button id="mostrarAlerta" class="estiloBotonEnlace">OMITIR NIVEL </button>
+    <div style="margin-top: 50px;"></div>
+
+    <div class="caja">
+        <img src="/img/136469575_b2492db8-f45b-4f23-bf4d-d96fee944fc8.jpg"
+        alt="Imagen" height="300px" id="miImagen" style="cursor: pointer;">
+    </div>
+
+    <div class="opcs1">
+        <img src="/img/circuito-if-game.png" alt="panda" height="275px" id="PANDA" onclick="verificarRespuesta(`panda`)"
+            style="cursor: pointer;">
+        <img src="/img/circuito-nand-game.png" alt="jirafa" height="275px" id="JIRAFA" onclick="verificarRespuesta(`jirafa`)"
+            style="cursor: pointer;">
+        <img src="/img/circuito-nor-game.png" alt="elefante" height="275px" id="ELEFANTE" onclick="verificarRespuesta(`elefante`)" 
+            style="cursor: pointer;">
+    </div>
+
+    <!--ESTE ES SONIDO CORRECTO-->
+    <audio id="correcto">
+        <source src="/audio/Respuesta Correcta .mp3" type="audio/mp3">
+    </audio>
+    <!--ESTE ES SONIDO INCORRECTO-->
+    <audio id="incorrecto">
+        <source src="/audio/Respuesta Incorrecta .mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+
+        // Asociar la función al evento clic de la imagen con id "miImagen"
+        let imagen = document.getElementById("miImagen");
+        imagen.addEventListener("click", function () {
+          reproducirSonido();
+          verificarRespuesta("animalElegido"); // Reemplaza "animalElegido" con la lógica para obtener la opción seleccionada
+        });
+    
+        function reproducirSonidoCorrecto() {
+          let sonido = document.getElementById("correcto");
+          sonido.play();
+        }
+        // Asociar la función al evento clic de la imagen con id "Perro"
+        let Rcorrect = document.getElementById("ELEFANTE");
+        Rcorrect.addEventListener("click", function () {
+          reproducirSonidoCorrecto();
+          mostrarAlerta();
+    
+        });
+        function mostrarAlerta() {
+          const swalWithBootstrapButtons = Swal.mixin({
+            buttonsStyling: true // Habilitar estilos de SweetAlert2 para los botones
+          });
+    
+          //ALARMA DE SIGUIENTE NIVEL!!!!
+          swalWithBootstrapButtons.fire({
+            imageWidth: '400px',
+            imageHeight: '350px',
+            imageAlt: 'imageNextNevel',
+            padding: '1rem',
+            grow: 'row',
+            background: '',
+            backdrop: true,
+            title: '<h2 class="title-Victoria">Felicidades!</h2>',
+            html: '<b class="texto-alarm-Victoria">Has Culminado con exito este Desafio!!</b>',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonText: "Ok",
+            cancelButtonText: "Repetir Nivel",
+            footer: '<b class="footer-principal">COMPUERTAS LOGICAS<br>',
+            allowOutsideClick: false,
+            timer: 10000,
+            timerProgressBar: true,
+            reverseButtons: true
+          }).then((result) => {
+            if (result.isConfirmed) {
+              swalWithBootstrapButtons.fire({
+                imageUrl: '/img/tablavrd-nor.png',
+                imageWidth: '375px',
+                imageHeight: '360px',
+                title: "Genial!",
+                text: "Vamos al Home!!",
+                icon: "success",
+                confirmButtonText: "OK"  // Añadimos un botón de confirmación
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  // Redirigir a la otra página HTML
+                  window.location.href = '/index.html';
+                }
+              });
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              swalWithBootstrapButtons.fire({
+                html: '<b class="title-repetir">Reintentar Nivel</b>',
+                html: '<b class="text-repetir">Genial, Aprendamos Nuevamente!</b',
+                icon: "warning",
+                background: '#444444',
+    
+              });
+            }
+          });
+    
+        }
+    
+        // Asociar la función al evento clic del botón del menu de Omitir en la barra de navegacion...
+        document.getElementById('mostrarAlerta').addEventListener('click', mostrarAlerta);
+    
+        function reproducirSonidoIncorrecto() {
+          let sonido = document.getElementById("incorrecto");
+          sonido.play();
+        }
+        // Asociar la función al evento clic de la imagen con id "Leon"
+        let Rincorrect = document.getElementById("PANDA");
+        Rincorrect.addEventListener("click", function () {
+          reproducirSonidoIncorrecto();
+          mostrarAlertaIncorrecta();
+        });
+        // Asociar la función al evento clic de la imagen con id "Leon"
+        let Rincorrect1 = document.getElementById("JIRAFA");
+        Rincorrect1.addEventListener("click", function () {
+          reproducirSonidoIncorrecto();
+          mostrarAlertaIncorrecta();
+        });
+        // Función para mostrar la alarma de respuesta incorrecta
+        function mostrarAlertaIncorrecta() {
+          Swal.fire({
+            icon: "error",
+            title: '<h2 class="title-oops">Oops...</h2>',
+            html: '<b class="text-alarm">Juguemos de Nuevo<br>Te has Equivocado:(</b>',
+            footer: '<a href="/pages/Clases.html" class="enlace-ayuda">Necesitas Ayuda?</a>',
+            background: '#444444',
+    
+          });
+        }
+      </script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="/js/sweetAlert.js"></script>
+</body>
+</html>

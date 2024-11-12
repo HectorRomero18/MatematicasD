@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIVEL 10</title>
+</head>
+<style>
+     /*ESTE ES CSS DEL MENU DE NAVEGACION DE LOS NIVELES!!
+    /* Estilo del botón */
+    .estiloBotonEnlace{
+            background-color: transparent;/* Color de fondo */
+            color: rgb(255, 255, 255); /* Color del texto */
+            background-color: #13c1e8;
+            /*padding: 10px 20px; /* Espaciado interno */
+            font-size: 16px; /* Tamaño del texto */
+            border: none; /* Sin borde */
+           /* border-radius: 5px; /* Bordes redondeados */
+           /* cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            font-weight: bold;
+            transition: all 0.5s ease;
+            margin-left: 30px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+
+        /* Estilo al pasar el mouse sobre el botón */
+        .estiloBotonEnlace:hover {
+            background-color: #ffffff; /* Cambia el color de fondo al pasar el mouse */
+            color: rgb(0, 0, 0);
+            border-radius: 15px;
+            padding: 10px 10px;
+            margin-left: 20px;
+        }
+    body {
+        font-family: Arial, helvetica;
+        margin-right: 35px;
+        padding: 0;
+        margin: 0;
+        background-image: url(12953563_Scene-25.jpg);
+        background-size: cover;
+    }
+
+    h1 {
+        text-align: center;
+
+    }
+
+    div.caja {
+        text-align: center;
+    }
+
+    div.opcs1 {
+        text-align: center;
+    }
+
+    img {
+        border-radius: 40px;
+
+    }
+
+    #resp {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+        margin: 20 auto;
+        color: white;
+        background-color: rgba(5, 207, 210, 0.952);
+        border-radius: 20px;
+        padding: 0px;
+        box-shadow: 0 8px 16px rgba(12, 2, 2, 0.5);
+
+    }
+
+    .texto-alarm-Victoria,
+    .title-Victoria {
+        color: rgb(100, 109, 134);
+        text-decoration: none;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+    .footer-principal {
+        color: #36f;
+        text-decoration: none;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        border-radius: 20px;
+
+    }
+
+    .title-repetir,
+    .text-repetir {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+    .title-oops {
+        color: white;
+        font-weight: bold;
+    }
+
+    .text-alarm {
+        color: rgba(255, 255, 255, 0.955);
+        text-decoration: none;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+    .enlace-ayuda {
+        color: rgb(42, 95, 255);
+        text-decoration: none;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: white;
+        text-align: center;
+        width: 40%;
+        height: 20px;
+        border-radius: 30px;
+        min-width: 7vh;
+        padding: 9px;
+        line-height: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .enlace-ayuda:hover {
+        padding: 13px 20px;
+        background: #ffd82c;
+        color: #000000;
+        border-radius: 30px;
+    }
+</style>
+
+<body>
+
+    <audio autoplay>
+        <source src="/audio/Sapo-caja.mp3" type="audio/mpeg">
+        tu navegador no es compatible
+    </audio>
+
+    <div id="resp">
+        <h1>
+            NIVEL 10!!
+            <hr> ¿QUE ANIMAL ESCUCHAS?
+        </h1>
+    </div>
+    <br>
+    <a href="/index.html" class="estiloBotonEnlace">PAGINA PRINCIPAL</a>
+    <a href="/SiluetasAnimales/JirafaSilueta.html" class="estiloBotonEnlace">OMITIR CATEGRIA</a>
+    <button id="mostrarAlerta" class="estiloBotonEnlace">OMITIR NIVEL</button>
+
+    <div class="caja">
+        <img src="https://img.freepik.com/vector-premium/caja-carton-signo-interrogacion-rojo-desempaqueta-paquete-desconocido_124715-2082.jpg?w=2000"
+            alt="Imagen" height="300px" id="miImagen" style="cursor: pointer;">
+    </div>
+
+    <div class="opcs1">
+        <img src="https://img.freepik.com/vector-gratis/lindo-camaleon-arbol-caricatura-ilustracion_138676-3262.jpg?size=626&ext=jpg&uid=R131185561&ga=GA1.1.622150531.1698560309"
+            alt="camaleon" height="275px" id="CAMALEON" onclick="verificarRespuesta(`camaleon`)"
+            style="cursor: pointer;">
+        <img src="https://img.freepik.com/vector-premium/rana-linda-que-sienta-ilustracion-icono-historieta-hoja-animal-love-icon-concept-premium-estilo-dibujos-animados_138676-1771.jpg?size=626&ext=jpg&uid=R131185561&ga=GA1.1.622150531.1698560309"
+            alt="sapo" height="275px" id="SAPO" onclick="verificarRespuesta(`sapo`)" style="cursor: pointer;">
+        <img src="https://img.freepik.com/vector-gratis/cute-caterpillar-standing-cartoon-vector-icono-ilustracion-animal-naturaleza-icono-concepto-aislado-plano_138676-8297.jpg?size=626&ext=jpg&uid=R131185561&ga=GA1.1.622150531.1698560309"
+            alt="gusano" height="275px" id="GUSANO" onclick="verificarRespuesta(`gusano`)" style="cursor: pointer;">
+    </div>
+
+
+    <!--ESTE ES SONIDO DE LA CAJA (PERRO)-->
+    <audio id="miSonido">
+        <source src="/audio/Sapo-caja.mp3" type="audio/mp3">
+    </audio>
+    <!--ESTE ES SONIDO CORRECTO-->
+    <audio id="correcto">
+        <source src="/audio/Respuesta Correcta .mp3" type="audio/mp3">
+    </audio>
+    <!--ESTE ES SONIDO INCORRECTO-->
+    <audio id="incorrecto">
+        <source src="/audio/Respuesta Incorrecta .mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        //ESTE ES EL SONIDO DE LA CAJA DEL ANIMAL
+        function reproducirSonido() {
+            let sonido = document.getElementById("miSonido");
+            sonido.play();
+        }
+        // Asociar la función al evento clic de la imagen con id "miImagen"
+        let imagen = document.getElementById("miImagen");
+        imagen.addEventListener("click", function () {
+            reproducirSonido();
+            verificarRespuesta("animalElegido"); // Reemplaza "animalElegido" con la lógica para obtener la opción seleccionada
+        });
+
+        function reproducirSonidoCorrecto() {
+            let sonido = document.getElementById("correcto");
+            sonido.play();
+        }
+        // Asociar la función al evento clic de la imagen con id "Perro"
+        let Rcorrect = document.getElementById("SAPO");
+        Rcorrect.addEventListener("click", function () {
+            reproducirSonidoCorrecto();
+            mostrarAlerta();
+
+        });
+        function mostrarAlerta() {
+            const swalWithBootstrapButtons = Swal.mixin({
+                buttonsStyling: true // Habilitar estilos de SweetAlert2 para los botones
+            });
+
+            //ALARMA DE SIGUIENTE NIVEL!!!!
+            swalWithBootstrapButtons.fire({
+                imageWidth: '400px',
+                imageHeight: '350px',
+                imageAlt: 'imageNextNevel',
+                padding: '1rem',
+                grow: 'row',
+                background: '',
+                backdrop: true,
+                title: '<h2 class="title-Victoria">Felicidades!</h2>',
+                html: '<b class="texto-alarm-Victoria">Has Desbloqueado La Categoria Dificil</b>',
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonText: "Siguiente Nivel",
+                cancelButtonText: "Repetir Nivel",
+                footer: '<b class="footer-principal">Recuerda que no se guardaran los Cambios...<br>',
+                allowOutsideClick: false,
+                timer: 10000,
+                timerProgressBar: true,
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire({
+                        imageUrl: 'https://img.freepik.com/vector-premium/rana-linda-que-sienta-ilustracion-icono-historieta-hoja-animal-love-icon-concept-premium-estilo-dibujos-animados_138676-1771.jpg?size=626&ext=jpg&uid=R131185561&ga=GA1.1.622150531.1698560309',
+                        imageWidth: '375px',
+                        imageHeight: '360px',
+                        title: "Genial!",
+                        text: "Sigamos Aprendiendo!!",
+                        icon: "success",
+                        confirmButtonText: "OK"  // Añadimos un botón de confirmación
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Redirigir a la otra página HTML
+                            window.location.href = '/SiluetasAnimales/JirafaSilueta.html';
+                        }
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    swalWithBootstrapButtons.fire({
+                        html: '<b class="title-repetir">Reintentar Nivel</b>',
+                        html: '<b class="text-repetir">Genial, Aprendamos Nuevamente!</b',
+                        icon: "warning",
+                        background: '#444444',
+
+                    });
+                }
+            });
+
+        }
+
+
+
+        // Asociar la función al evento clic del botón
+        document.getElementById('mostrarAlerta').addEventListener('click', mostrarAlerta);
+
+
+        function reproducirSonidoIncorrecto() {
+            let sonido = document.getElementById("incorrecto");
+            sonido.play();
+        }
+        // Asociar la función al evento clic de la imagen con id "Leon"
+        let Rincorrect = document.getElementById("CAMALEON");
+        Rincorrect.addEventListener("click", function () {
+            reproducirSonidoIncorrecto();
+            mostrarAlertaIncorrecta();
+        });
+        // Asociar la función al evento clic de la imagen con id "Leon"
+        let Rincorrect1 = document.getElementById("GUSANO");
+        Rincorrect1.addEventListener("click", function () {
+            reproducirSonidoIncorrecto();
+            mostrarAlertaIncorrecta();
+        });
+        // Función para mostrar la alarma de respuesta incorrecta
+        function mostrarAlertaIncorrecta() {
+            Swal.fire({
+                icon: "error",
+                title: '<h2 class="title-oops">Oops...</h2>',
+                html: '<b class="text-alarm">Juguemos de Nuevo<br>Te has Equivocado:(</b>',
+                footer: '<a href="/pages/ayudaanimales.html" class="enlace-ayuda">Necesitas Ayuda?</a>',
+                background: '#444444',
+
+            });
+        }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="/js/sweetAlert.js"></script>
+</body>
+
+</html>
