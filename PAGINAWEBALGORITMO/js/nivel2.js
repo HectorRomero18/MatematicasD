@@ -61,7 +61,7 @@ function mostrarAlerta() {
 }).then((result) => {
   if (result.isConfirmed) {
     // Redirigir a la otra página HTML
-    window.location.href = '/pages/animales3.html';
+    window.location.href = '/MatematicasD/PAGINAWEBALGORITMO/pages/animales3.html';
   }      
       });
     } else if (result.dismiss === Swal.DismissReason.cancel) {

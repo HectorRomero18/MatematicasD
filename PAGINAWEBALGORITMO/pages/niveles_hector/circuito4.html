@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Circuitos con Sonido</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="/MatematicasD/PAGINAWEBALGORITMO/pages/niveles_hector/css/circuito2.css">
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 id="title" class="text-center mb-4">Simulador de Circuitos con Sonido</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-12 text-center equation-container">
+                <p id="math_one">Encuentra la combinación correcta para que la bombilla se encienda!</p>
+                <p class="equation">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow class="iconitos">
+                            <mrow>
+                                <mi>( A</mi>
+                                <mo>&#8901;</mo> <!-- AND -->
+                                <mi>B</mi>
+                                <mo>&#8901;</mo> <!-- AND -->
+                                <mo>&#172;</mo> <!-- NOT -->
+                                <mi>C</mi>
+                                <mo>&#8901;</mo> <!-- AND -->
+                                <mi>D )</mi>
+                            </mrow>
+                            <mo>&#8744;</mo> <!-- OR -->
+                            <mi>E</mi>
+                        </mrow>
+                    </math>                    
+                    
+                    
+                </p>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <!-- Card para el circuito -->
+                <div class="custom-card">
+                    <h3 class="text-center mb-4">Interruptores</h3>
+        
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-toggle-off info-icon"></i>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch1">
+                            <label class="form-check-label switch-label" for="switch1">Interruptor 1 (A)</label>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-toggle-off info-icon"></i>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch2">
+                            <label class="form-check-label switch-label" for="switch2">Interruptor 2 (B)</label>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-toggle-off info-icon"></i>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch3">
+                            <label class="form-check-label switch-label" for="switch3">Interruptor 3 (C)</label>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-toggle-off info-icon"></i>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch4">
+                            <label class="form-check-label switch-label" for="switch3">Interruptor 4 (D)</label>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-toggle-off info-icon"></i>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch5">
+                            <label class="form-check-label switch-label" for="switch3">Interruptor 5 (E)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-auto">
+                <!-- Lámpara con icono de bombilla -->
+                <div id="lamp" class="lamp apagada">
+                    <i class="bi bi-lightbulb"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-3">
+            <div class="col-auto">
+                <!-- Botón para mostrar instrucciones -->
+                <button id="instruccionesBtn" class="btn btn-info">
+                    <i class="bi bi-info-circle"></i> Ver Instrucciones
+                </button>
+            </div>
+        </div>
+
+        <!-- Elemento de audio para el sonido -->
+        <audio id="audio" src="/MatematicasD/PAGINAWEBALGORITMO/audio/Respuesta Correcta .mp3" preload="auto"></audio>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/MatematicasD/PAGINAWEBALGORITMO/pages/niveles_hector/js/circuito4.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('/MatematicasD/PAGINAWEBALGORITMO/img/318801-P958D9-773.jpg');
+    background-size: cover;
+    /* Ajusta la imagen para cubrir toda la pantalla */
+    background-position: center;
+    /* Centra la imagen */
+    background-repeat: no-repeat;
+    /* Evita que se repita */
+    background-attachment: fixed;
+    color: #fff;
+}
+#title{
+    font-size: 43px;
+}
+
+.lamp {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: grey; /* Lámpara apagada */
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lamp i {
+    font-size: 50px;
+    color: white;
+}
+
+.encendida {
+    background-color: yellow; /* Lámpara encendida */
+    transition: background-color 0.3s;
+}
+
+.apagada {
+    background-color: grey;
+    transition: background-color 0.3s;
+}
+
+.custom-card {
+    background: transparent;
+    backdrop-filter: blur(20px);
+    /* Desenfoque de fondo */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.switch-label {
+    font-size: 1.5em;
+    margin-left: 20px;
+}
+
+.form-check-input {
+    transform: scale(2); /* Aumenta el tamaño de los interruptores */
+    margin-right: 20px;
+}
+
+.info-icon {
+    font-size: 2em;
+    color: #7bcb12;
+    margin-right: 30px; /* Ajuste para espacio entre icono y switch */
+    min-height: 65px; /* Ajuste para espacio entre icono y switch */
+}
+
+/* Ajuste para alinear los iconos con los interruptores grandes */
+.d-flex.align-items-center {
+    align-items: center; /* Alinear verticalmente los iconos */
+    justify-content: flex-start; /* Alinear horizontalmente */
+}
+
+.equation {
+    font-size: 2.5em;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Mejor estilo para la ecuación */
+.equation-container {
+    color: #fff;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    /* Desenfoque de fondo */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.iconitos{
+    color: #fff;
+}
+#math_one{
+    font-size: 19px;
+}

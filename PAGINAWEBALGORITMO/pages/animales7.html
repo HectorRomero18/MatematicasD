@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NIVEL 6</title>
-  <link rel="stylesheet" href="/css/animales.css">
+  <link rel="stylesheet" href="../css/animales.css">
   <style>
     /*ESTE ES CSS DEL MENU DE NAVEGACION DE LOS NIVELES!!
          /* Estilo del botón */
@@ -51,35 +51,35 @@
     </h1>
   </div>
   <br>
-  <a href="/index.html" class="estiloBotonEnlace">PAGINA PRINCIPAL</a>
-  <a href="/SiluetasAnimales/JirafaSilueta.html" class="estiloBotonEnlace">OMITIR CATEGRIA</a>
+  <a href="../index.html" class="estiloBotonEnlace">PAGINA PRINCIPAL</a>
+  <a href="../SiluetasAnimales/JirafaSilueta.html" class="estiloBotonEnlace">OMITIR CATEGRIA</a>
   <button id="mostrarAlerta" class="estiloBotonEnlace">OMITIR NIVEL</button>
   <div style="margin-top: 50px;"></div>
 
   <div class="caja">
-    <img src="/img/136469575_b2492db8-f45b-4f23-bf4d-d96fee944fc8.jpg" alt="Imagen" height="300px" id="miImagen"
+    <img src="../img/136469575_b2492db8-f45b-4f23-bf4d-d96fee944fc8.jpg" alt="Imagen" height="300px" id="miImagen"
       style="cursor: pointer;">
   </div>
 
   <div class="opcs1">
     <img
-      src="/img/circuito-or-game.png"
+      src="../img/circuito-or-game.png"
       alt="cerdo" height="275px" id="CERDO" onclick="verificarRespuesta(`cerdo`)" style="cursor: pointer;">
     <img
-      src="/img/circuito-nor-game.png"
+      src="../img/circuito-nor-game.png"
       alt="pez" height="275px" id="PEZ" onclick="verificarRespuesta(`pez`)" style="cursor: pointer;">
     <img
-      src="/img/circuito-xor-game.png"
+      src="../img/circuito-xor-game.png"
       alt="conejo" height="275px" id="CONEJO" onclick="verificarRespuesta(`conejo`)" style="cursor: pointer;">
   </div>
 
   <!--ESTE ES SONIDO CORRECTO-->
   <audio id="correcto">
-    <source src="/audio/Respuesta Correcta .mp3" type="audio/mp3">
+    <source src="../audio/Respuesta Correcta .mp3" type="audio/mp3">
   </audio>
   <!--ESTE ES SONIDO INCORRECTO-->
   <audio id="incorrecto">
-    <source src="/audio/Respuesta Incorrecta .mp3" type="audio/mp3">
+    <source src="../audio/Respuesta Incorrecta .mp3" type="audio/mp3">
   </audio>
 
   <script>
@@ -139,7 +139,7 @@
           }).then((result) => {
             if (result.isConfirmed) {
               // Redirigir a la otra página HTML
-              window.location.href = '/pages/animales8.html';
+              window.location.href = '/MatematicasD/PAGINAWEBALGORITMO/pages/animales8.html';
             }
           });
         } else if (result.dismiss === Swal.DismissReason.cancel) {

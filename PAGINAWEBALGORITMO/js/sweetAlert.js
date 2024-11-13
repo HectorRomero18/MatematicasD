@@ -38,7 +38,7 @@ document.getElementById('mostrarAlerta').addEventListener('click', function () {
 }).then((result) => {
   if (result.isConfirmed) {
     // Redirigir a la otra página HTML
-    window.location.href = 'animales2.html';
+    window.location.href = '../pages/animales4.html';
   }
       
       });

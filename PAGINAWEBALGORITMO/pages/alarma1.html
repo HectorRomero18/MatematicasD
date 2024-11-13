@@ -35,7 +35,7 @@
 
         /* Barra de navegación */
         nav {
-            background: transparent;
+            background-color: #3db6f7;
             border: 2px solid rgba(255, 255, 255, 0.5);
             border-radius: 20px;
             backdrop-filter: blur(20px);
@@ -157,13 +157,13 @@
             </a>
         </div>
         <div>
-            <a href="/index.html">
+            <a href="../index.html">
                 <i class="fas fa-home" style="margin-right: 10px;"></i> Inicio
             </a>
-            <a href="simulacion.html">
+            <a href="../simulacion.html">
                 <i class="fas fa-bell" style="margin-right: 10px;"></i> Simulación de Alarma
             </a>
-            <a href="OMITIR.html">
+            <a href="../OMITIR.html">
                 <i class="fa-solid fa-square-caret-right" style="margin-right: 10px;"></i> Omitir Alarma
             </a>
         </div>
@@ -201,7 +201,7 @@
         const states = { door: false, window1: false, window2: false };
 
         // Cargar el sonido de alarma
-        const alarmSound = new Audio('/audio/Respuesta Incorrecta .mp3'); // SONIDO DE LA ALARMA...
+        const alarmSound = new Audio('../audio/Respuesta Incorrecta .mp3'); // SONIDO DE LA ALARMA...
 
         // Función para cambiar el estado de la puerta o ventana
         function toggle(item) {
@@ -249,7 +249,7 @@
                     text: 'La puerta y una o más ventanas están abiertas.',
                     icon: 'warning',
                     confirmButtonText: 'Entendido',
-                    imageUrl: '/img/Main.png', // Ruta de la imagen
+                    imageUrl: '../img/Main.png', // Ruta de la imagen
                     imageAlt: 'Alarma Activada', // Descripción de la imagen
                     width: '65%', // Ajusta el 60% del ancho de la pantalla
                     heightAuto: true, // Ajusta la altura automáticamente
@@ -264,7 +264,7 @@
                     text: 'El sistema está en estado seguro.',
                     icon: 'info',
                     confirmButtonText: 'Entendido',
-                    imageUrl: '/img/Main.png', // Ruta de la imagen
+                    imageUrl: '../img/Main.png', // Ruta de la imagen
                     imageAlt: 'Alarma Desactivada', // Descripción de la imagen
                     width: '65%', // Ajusta el 60% del ancho de la pantalla
                     heightAuto: true, // Ajusta la altura automáticamente
